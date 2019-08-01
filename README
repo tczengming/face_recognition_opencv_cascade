@@ -1,0 +1,32 @@
+The AT&T Facedatabase https://www.cl.cam.ac.uk/research/dtg/attarchive/facedatabase.html
+解压数据tar -xvf att_faces.tar.Z 
+orl_faces/
+orl_faces/README
+orl_faces/s1/
+orl_faces/s1/6.pgm
+orl_faces/s1/7.pgm
+orl_faces/s1/8.pgm
+orl_faces/s1/9.pgm
+......
+
+orl_faces/下每个文件夹对应一个人， 每人10张图， 图片大小92x112
+40人，每人10张
+
+python安装opencv, 安装主模块，及contrib模块
+pip install opencv-contrib-python
+此条命令会打印出安装路径，比如安装到/usr/lib64/python3.6/site-packages/
+则可以ls下这个路径，可以查看安装了哪些,如果看到有cv2就代表安装成功，可以用import cv2来引入
+
+pip install opencv-python 这个安装是不包含contrib模块，会无法使用face人脸模块的
+
+./get_face.py
+使用opencv自带的人脸检测功能，从摄像头拍几张自己的人脸图片，保存成92x112大小格式为pgm, 然后在orl_faces/下创建s41目录
+放入10张自己拍摄的人脸图片
+
+./train_face.py Eigen
+执行训练
+注意：train(imgs, labels)时 label要设定为整形，不能为str
+
+./test_face.py Eigen
+获取摄像头图片进行测试，如果检测到目标人脸会画出框且会显示对应的label
+
